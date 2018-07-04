@@ -1,0 +1,94 @@
+
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+
+    <table id="input" border="1" style="margin: 30px; display:none;">
+    	<thead>
+    			<tr>
+                    <th>Solicitud</th>
+                    <th>Producto</th>
+                    <th>Marca</th>
+                    <th>Pais</th>
+                    <th>Registro</th>
+                    <th>Presentacion</th>
+                    <th>Contenido</th>
+                    <th>Material</th>
+                    <th>Subgrupo alimenticio</th>
+                    <th>Fecha de solicitud</th>
+                    <th>Tipo de riesgo</th>
+                    <th>Numero de certificacion</th>
+                    <th>Empresa</th>
+                    <th>Tipo solicitud</th>
+                    <th>Fecha recepcion laboratorio</th>
+                    <th>Fecha ingreso laboratorio</th>
+                    <th>Fecha resultado laboratorio</th>
+                    <th>Motivo de analisis</th>
+                    <th>Laboratorio</th>
+                         
+                </tr>
+    	</thead>
+        <tbody>
+
+        {% for post in posts %}
+        <tr>
+        <td>{{ post.NumeroSolicitud }}</td>
+        <td>{{ post.NombreProducto }}</td>
+        <td>{{ post.Marca }}</td>
+        <td>{{ post.PaisOrigen }}</td>
+        <td>{{ post.NumeroRegistro }}</td>
+        <td>{{ post.Presentacion }}</td>
+        <td>{{ post.Contenido }}</td>
+        <td>{{ post.Material }}</td>
+        <td>{{ post.SubgrupoAlimenticio }}</td>
+        <td>{{ post.FechaSolicitud }}</td>
+        <td>{{ post.TipoRiesgo }}</td>
+        <td>{{ post.NumeroCertificacion }}</td>
+        <td>{{ post.Empresa }}</td>
+        <td>{{ post.TipoRegistro }}</td>
+        <td>{{ post.FechaRecepcion }}</td>
+        <td>{{ post.FechaIngreso }}</td>
+        <td>{{ post.FechaEmision }}</td>
+        <td>{{ post.MotivoAnalisis }}</td>
+        <td>{{ post.Laboratorio }}</td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+ <script type="text/javascript">
+    // This example loads data from the HTML table below.
+
+    $(function(){
+
+        var renderers = $.extend($.pivotUtilities.renderers,
+            $.pivotUtilities.export_renderers);
+
+        $("#output").pivotUI($("#input"),
+        {
+            
+             renderers: renderers,
+             rendererName: "TSV Export"
+        });
+     });
+        </script>
+
+      
+
+        <div id="output" style="margin: 30px;"></div>
+
+        <br />
+
+
+                
+        <p></p>
+
+
+
+{% endblock %}
+
